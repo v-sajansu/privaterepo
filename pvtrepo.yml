@@ -1,0 +1,17 @@
+resources:
+  repositories:
+  - repository: Azure-Pipeline-Demo # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: github.com_v-sajansu
+    name: v-sajansu/Azure-Pipeline-Demo
+trigger:
+    - main
+pool:
+  name: My agent pool
+steps:
+- checkout: Azure-Pipeline-Demo
+- task: PowerShell@2
+  displayName: 'PowerShell Script'
+  inputs:
+    targetType: filePath
+    filePath: './demo-script.ps1'
